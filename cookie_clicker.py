@@ -14,6 +14,7 @@ driver.get("https://orteil.dashnet.org/experiments/cookie/")
 
 # Fetch the web elements for cookie clicking and store items
 click_cookie = driver.find_element(By.CSS_SELECTOR, value='div #cookie')
+cookies_p_sec = driver.find_element(By.CSS_SELECTOR, value="div #cps")
 
 # Dictionary to track the original costs of items
 original_item_costs = {}
@@ -87,6 +88,7 @@ def buy_most_expensive_item(current_money, store_items):
 
 # Main loop: click the cookie, check money, and buy items
 while True:
+    print(f"{cookies_p_sec.text}")
     # Click the cookie multiple times
     for _ in range(10):
         click_cookie.click()
@@ -101,7 +103,7 @@ while True:
     buy_most_expensive_item(int_money, store_items)
     
     # Sleep for a short while to avoid overwhelming the site
-    time.sleep(0.5)
+    time.sleep(0.1)
 
 # Close the driver (unreachable in this loop, but should be here in a final version)
 # driver.quit()
