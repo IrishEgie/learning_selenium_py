@@ -12,23 +12,22 @@ driver = webdriver.Firefox(options=options)
 driver.get("https://www.python.org/")
 
 # Locate event elements
-event_elements = driver.find_element(By.XPATH, value='//*[@id="content"]/div/section/div[2]/div[2]/div/ul').text
-event_list = event_elements.split("\n")
-
+event_time_list = driver.find_elements(By.CSS_SELECTOR, value=".event-widget time")
+event_name_list = driver.find_elements(By.CSS_SELECTOR, value=".event-widget li a")
 # Initialize an empty dictionary to store event information
 event_dict = {}
-count = 0
 
-# Loop through the event list and extract dates and event names
-for i in range(0, len(event_list), 2):
-    event_tag = {}
-    event_tag['time'] = event_list[i]  # Date
-    event_tag['name'] = event_list[i+1]  # Event name
-    
-    count += 1
-    event_dict[f'{count}'] = event_tag
 
-# Print the final dictionary
+time_list = [time.text for time in event_time_list]
+name_list = [name.text for name in event_name_list]
+
+# Add event_item to event_dict using count as the key
+for count in range(len(time_list)):
+    event_dict[count+1] = {
+        "time": time_list[count],
+        "name": name_list[count]
+    }
+
 print(event_dict)
 
 # Close the driver
