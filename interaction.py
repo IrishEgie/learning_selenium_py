@@ -33,9 +33,9 @@ email = driver.find_element(By.NAME, value="email")
 submit = driver.find_element(By.CSS_SELECTOR, value="button")
 
 
-fname.send_keys("Ej", Keys.TAB)
-lname.send_keys("Arao", Keys.TAB)
-email.send_keys("asdfad@email.com", Keys.TAB)
+fname.send_keys("Ej")
+lname.send_keys("Arao")
+email.send_keys("asdfad@email.com")
 submit.send_keys(Keys.ENTER)
 
 # # Close the driver
