@@ -9,7 +9,7 @@ options.set_preference("general.useragent.override", "Mozilla/5.0 (Windows NT 10
 driver = webdriver.Firefox(options=options)
 
 # Find elements Exercise
-driver.get("https://en.wikipedia.org/wiki/Main_Page")
+# driver.get("https://en.wikipedia.org/wiki/Main_Page")
 
 # article_count = driver.find_element(By.CSS_SELECTOR, value="#articlecount a")
 
@@ -20,9 +20,23 @@ driver.get("https://en.wikipedia.org/wiki/Main_Page")
 # all_portals.click()
 
 
-search = driver.find_element(By.NAME, value="search")
-search.send_keys("Python",Keys.ENTER)
+# search = driver.find_element(By.NAME, value="search")
+# search.send_keys("Python",Keys.ENTER)
 
+#------------------------------Interaction Challenge-------------------------------------#
+
+driver.get("https://secure-retreat-92358.herokuapp.com/")
+
+fname = driver.find_element(By.NAME, value="fName")
+lname = driver.find_element(By.NAME, value="lName")
+email = driver.find_element(By.NAME, value="email")
+submit = driver.find_element(By.CSS_SELECTOR, value="button")
+
+
+fname.send_keys("Ej", Keys.TAB)
+lname.send_keys("Arao", Keys.TAB)
+email.send_keys("asdfad@email.com", Keys.TAB)
+submit.send_keys(Keys.ENTER)
 
 # # Close the driver
 # driver.quit()
